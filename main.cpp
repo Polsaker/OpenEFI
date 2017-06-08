@@ -20,15 +20,17 @@ int dntI = XX;              //cantidad de dientes entre inyecciones
 int dntE = XX;              //cantidad de dientes entre punto muerto superior de cilindros
 
 /*
-int avEnFunc = XX;             //cantidad de grados/dientes de avance del encendido con motor a temperatura funcionamiento
-int avEnFrio = XX;             //cantidad de grados/dientes de avance del encendido con motor frio
-int avEnArra  = XX;             //cantidad de grados/dientes de avance del encendido con motor en modo arranque
+int avEnFunc = XX;          //cantidad de grados/dientes de avance del encendido con motor a temperatura funcionamiento
+int avEnFrio = XX;          //cantidad de grados/dientes de avance del encendido con motor frio
+int avEnArra  = XX;         //cantidad de grados/dientes de avance del encendido con motor en modo arranque
 ----------------------------IMPORTANTE----------------------------------
 reemplazo estas tres variables por una sola para una facil utilización del avance del encendido
 en cambio, en vez de tener 3 variables de avance tenemos 3 métodos , frio, normal y arranque
 --------------------------------------------------------------------------
+    |
+    V
 */
-avanceDeChispa = 8;//lo seteo por default en 8
+avanceDeChispa = 3;//en dientes de volante (2,42 grados) , default en 3
 
 int Mar   = AN0;            //pin de mariposa de acelerador
 int Lamb  = AN1;            //pin de sonda lambda
@@ -90,16 +92,44 @@ void ControlINY(){
     //Controla los tiempos de inyeccion dependiendo la mariposa,rpm y temperatura del motor
 }
 
+//---------------
 void ControlEncendidoFrio(){
-    //Controla el encendido dependiendo de la posicion del cigueñal y temperatura
-    avEnFrio
-    if(rpm <= 600){
-        avanceDeChispa = 8;
-    }else if(rpm <= 1500){
-
+    if(rpm < 2000){
+        avanceDeChispa = 4;//+-10°
+    }else if(rpm < 3000){
+        avanceDeChispa = 6;//+-15°
+    }else if(rpm < 4000){
+        avanceDeChispa = 8;//+-20°
+    }else if(rpm < 5000){
+        avanceDeChispa = 10;//+-25°
+    }else if(rpm < 6000){
+        avanceDeChispa = 12;//+-30°
     }
-
 }
+void ControlEncendidoNormal(){
+    if(rpm < 2000){
+        avanceDeChispa = 4;//+-10°
+    }else if(rpm < 3000){
+        avanceDeChispa = 7;//+-17,5°
+    }else if(rpm < 4000){
+        avanceDeChispa = 10;//+-25°
+    }else if(rpm < 5000){
+        avanceDeChispa = 13;//+-32,5°
+    }else if(rpm < 6000){
+        avanceDeChispa = 15;//+-37,5°
+    }
+}
+//se comprende que este método solo se va a ejecutar durante el funcionamiento del burro y solo
+//5 segundos despues del arranque. acto seguidop pasar al metodo de avance en frio o caliente
+//respectivamente
+void ControlEncendidoArranque(float temperatura){
+    if(temperatura < 45){
+        avanceDeChispa = 2;//+-5°
+    }else{
+        avanceDeChispa = 3;//+-7,5°
+    }
+}
+//------------
 
 void Temperatura(){
     //Controla el ventilador y apagado de emergencia del motor
