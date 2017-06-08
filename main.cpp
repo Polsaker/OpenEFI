@@ -11,8 +11,8 @@ int tMax     = 22;          //timpo maximo de inyeccion
 int pul  = LOW;             //pulso de disparo de sensor de posicion de cigueñal
 bool varrpm = LOW;          //variable para no volver a contar mismo diente como pulso
 int pinrpm = 10;            //pin conectado al sensor de posicion de cigueñal
-int pinBujias13 = 3;
-int pinBujias24 = 4;
+int pinBujias13 = 1;
+int pinBujias24 = 2;
 
 int diente = 0;             //numero de diente actual de la corona
 int intervalo1 = 500;       //intervalo para medir rpm
