@@ -11,6 +11,8 @@ int tMax     = 22;          //timpo maximo de inyeccion
 int pul  = LOW;             //pulso de disparo de sensor de posicion de cigueñal
 bool varrpm = LOW;          //variable para no volver a contar mismo diente como pulso
 int pinrpm = 10;            //pin conectado al sensor de posicion de cigueñal
+int pinBujias13 = 3;
+int pinBujias24 = 4;
 
 int diente = 0;             //numero de diente actual de la corona
 int intervalo1 = 500;       //intervalo para medir rpm
@@ -127,7 +129,7 @@ void ControlEncendidoNormal(){
     }
 }
 //se comprende que este método solo se va a ejecutar durante el funcionamiento del burro y solo
-//5 segundos despues del arranque. acto seguidop pasar al metodo de avance en frio o caliente
+//5 segundos despues del arranque. acto seguido pasar al metodo de avance en frio o caliente
 //respectivamente
 void ControlEncendidoArranque(float temperatura){
     if(temperatura < 45){
