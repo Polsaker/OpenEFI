@@ -23,7 +23,10 @@ int dntE = XX;              //cantidad de dientes entre punto muerto superior de
 int avEnFunc = XX;             //cantidad de grados/dientes de avance del encendido con motor a temperatura funcionamiento
 int avEnFrio = XX;             //cantidad de grados/dientes de avance del encendido con motor frio
 int avEnArra  = XX;             //cantidad de grados/dientes de avance del encendido con motor en modo arranque
+----------------------------IMPORTANTE----------------------------------
 reemplazo estas tres variables por una sola para una facil utilización del avance del encendido
+en cambio, en vez de tener 3 variables de avance tenemos 3 métodos , frio, normal y arranque
+--------------------------------------------------------------------------
 */
 avanceDeChispa = 8;//lo seteo por default en 8
 
@@ -90,8 +93,10 @@ void ControlINY(){
 void ControlEncendidoFrio(){
     //Controla el encendido dependiendo de la posicion del cigueñal y temperatura
     avEnFrio
-    if(rpm <= ){
-        avEnFrio
+    if(rpm <= 600){
+        avanceDeChispa = 8;
+    }else if(rpm <= 1500){
+
     }
 
 }
