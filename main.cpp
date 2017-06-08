@@ -55,6 +55,7 @@ void setup(){
 
 void loop(){
 
+        controlDeEncendido();
         Temperatura();
         ControlRPM();
         ControlINY();
@@ -91,7 +92,13 @@ if (diente == dnt){
 void ControlINY(){
     //Controla los tiempos de inyeccion dependiendo la mariposa,rpm y temperatura del motor
 }
+void controlDeEncendido(float temperatura){
 
+    if(rpm < 100){
+        ControlEncendidoArranque();
+    }
+
+}
 //---------------
 void ControlEncendidoFrio(){
     if(rpm < 2000){
@@ -128,6 +135,12 @@ void ControlEncendidoArranque(float temperatura){
     }else{
         avanceDeChispa = 3;//+-7,5°
     }
+}
+void iniciarChispazo(int pin){
+    digitalWrite(pin, HIGH);
+}
+void pararChispazo(int pin){
+    digitalWrite(pin, HIGH);
 }
 //------------
 
