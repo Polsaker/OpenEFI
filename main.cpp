@@ -133,26 +133,61 @@ void controlDeEncendido(float temperatura){
         }
     }
     //-------fin del bloque de control de avance-----------
-    if(diente == (33 - avanceDeChispa) ){//chispazo para el piston 1 y 3(siendo el 3 chispa perdida)
-        iniciarChispazo(pinBobinas13);
-        //esperar un tiempito
-        pararChispazo(pinBobinas13);
-    }else if(diente == (66 - avanceDeChispa){//chispazo para el piston 1 y 3(siendo el 1 chispa perdida)
-        iniciarChispazo(pinBobinas13);
-        //esperar un tiempito
-        pararChispazo(pinBobinas13);
-    }else if(diente == (99 - avanceDeChispa){//chispazo para el piston 2 y 4(siendo el 4 chispa perdida)
-        iniciarChispazo(pinBobinas24);
-        //esperar un tiempito
-        pararChispazo(pinBobinas24);
-    }else if(diente == (132 - avanceDeChispa){//chispazo para el piston 2 y 4(siendo el 2 chispa perdida)
-        iniciarChispazo(pinBobinas24);
-        //esperar un tiempito
-        pararChispazo(pinBobinas24);
-    }
-    //------bloque que controla la mandada de chispa
+    //----
+    //--------inicio del bloque de control de cuando se larga la chispa------------
 
+    int periodo = 7; //periodo en mS
+    unsigned long tiempo  = 0;
+    unsigned long milisant = 0;
+    bool activado = false;
 
+        if(diente == (33 - avanceDeChispa) ){//----chispazo para el piston 1 y 3(siendo el 3 chispa perdida)
+            iniciarChispazo(pinBobinas13);//iniciar chispazo
+            activado = true;
+            //esperar un tiempito
+            if(activado == true){
+                tiempo = millis();
+            }
+            if ((millis() - millisant) >= periodo && activado == true) {
+                pararChispazo(pinBobinas13);//una vez pasados 5ms terminar chispazo
+                milisant = millis();
+                activado = false;
+            }
+        }else if(diente == (66 - avanceDeChispa){//----chispazo para el piston 1 y 3(siendo el 1 chispa perdida)
+            iniciarChispazo(pinBobinas13);
+            //esperar un tiempito
+            if(activado == true){
+                tiempo = millis();
+            }
+            if ((millis() - millisant) >= periodo && activado == true) {
+                pararChispazo(pinBobinas13);
+                milisant = millis();
+                activado = false;
+            }
+        }else if(diente == (99 - avanceDeChispa){//----chispazo para el piston 2 y 4(siendo el 2 chispa perdida)
+            iniciarChispazo(pinBobinas24);
+            //esperar un tiempito
+            if(activado == true){
+                tiempo = millis();
+            }
+            if ((millis() - millisant) >= periodo && activado == true) {
+                pararChispazo(pinBobinas24);
+                milisant = millis();
+                activado = false;
+            }
+        }else if(diente == (132 - avanceDeChispa){//----chispazo para el piston 2 y 4(siendo el 4 chispa perdida)
+            iniciarChispazo(pinBobinas24);
+            //esperar un tiempito
+            if(activado == true){
+                tiempo = millis();
+            }
+            if ((millis() - millisant) >= periodo && activado == true) {
+                pararChispazo(pinBobinas24);
+                milisant = millis();
+                activado = false;
+            }
+        }
+    //------fin del bloque que controla la mandada de chispa------------------
 }
 //---------------
 void ControlEncendidoFrio(){
