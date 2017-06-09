@@ -126,7 +126,7 @@ void controlDeEncendido(float temperatura){
     if(arrancando == true){
         ControlEncendidoArranque(temperatura);
     }else if(arrancando == false){
-        if(temperatura < 40){
+        if(temperatura < 60){
             ControlEncendidoFrio();
         }else{
             ControlEncendidoNormal();
@@ -155,6 +155,7 @@ void controlDeEncendido(float temperatura){
             }
         }else if(diente == (66 - avanceDeChispa){//----chispazo para el piston 1 y 3(siendo el 1 chispa perdida)
             iniciarChispazo(pinBobinas13);
+            activado = true;
             //esperar un tiempito
             if(activado == true){
                 tiempo = millis();
@@ -166,6 +167,7 @@ void controlDeEncendido(float temperatura){
             }
         }else if(diente == (99 - avanceDeChispa){//----chispazo para el piston 2 y 4(siendo el 2 chispa perdida)
             iniciarChispazo(pinBobinas24);
+            activado = true;
             //esperar un tiempito
             if(activado == true){
                 tiempo = millis();
@@ -177,6 +179,7 @@ void controlDeEncendido(float temperatura){
             }
         }else if(diente == (132 - avanceDeChispa){//----chispazo para el piston 2 y 4(siendo el 4 chispa perdida)
             iniciarChispazo(pinBobinas24);
+            activado = true;
             //esperar un tiempito
             if(activado == true){
                 tiempo = millis();
