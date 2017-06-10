@@ -235,7 +235,6 @@ void controlDeEncendido(float temperatura){
                 tiempo = millis();
             }
             if ((millis() - millisant) >= periodo && activado == true) {
-                pararChispazo(pinBobinas13);//una vez pasados 5ms terminar chispazo
                 millisant = millis();
                 activado = false;
             }
